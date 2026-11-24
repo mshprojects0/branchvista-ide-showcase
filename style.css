@@ -43,3 +43,5 @@ header nav { align-items: center; }
   header .nav { height: auto; flex-wrap: wrap; padding-block: .65rem; gap: .45rem; }
   header nav { display: flex; flex-wrap: wrap; gap: .4rem .75rem; }
 }
+
+@media(min-width:721px){#linux-city-crossing{display:grid;grid-template-columns:minmax(190px,1fr) minmax(0,3fr);column-gap:2rem}#linux-city-crossing>*{grid-column:2}}
