@@ -18,12 +18,12 @@ footer .credits{display:block;padding-top:0;font-size:.85rem}footer .credits a{m
 .highlight-player p{text-align:right;margin:.45rem 0 0}
 .hero-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.08fr);gap:2.5rem;align-items:center}
 .hero-copy .watch{margin:0 .5rem .5rem 0}
-.hero .highlight-player{width:100%;max-width:300px;margin:0 0 1rem auto;align-self:end}
+.hero .highlight-player{width:100%;max-width:340px;margin:0 0 1rem auto;align-self:end}
 .hero .highlight-player iframe{border:1px solid #ffffff3a;box-shadow:0 16px 48px #0008}
 .video-poster{position:relative;display:block;width:100%;padding:0;border:1px solid #ffffff3a;background:#10141a;cursor:pointer;box-shadow:0 16px 48px #0008}
 .video-poster img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover}
 .video-poster span{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);color:#fff;font-size:3.25rem;line-height:1;text-shadow:0 2px 14px #000b}
-@media(max-width:760px){.hero-layout{grid-template-columns:1fr;gap:1.25rem}.hero .inner{padding:2.5rem 0 4rem}.hero h1{font-size:clamp(3rem,12vw,5rem)}.hero .highlight-player{max-width:230px;margin:0 auto;align-self:center}}
+@media(max-width:760px){.hero-layout{grid-template-columns:1fr;gap:1.25rem}.hero .inner{padding:2.5rem 0 4rem}.hero h1{font-size:clamp(3rem,12vw,5rem)}.hero .highlight-player{max-width:250px;margin:0 auto;align-self:center}}
 header nav { align-items: center; }
 .support-project {
   display: inline-flex;
