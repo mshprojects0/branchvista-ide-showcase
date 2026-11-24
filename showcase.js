@@ -19,3 +19,18 @@ for (const buttons of [tourButtons, lightButtons]) {
     if (button.getAttribute("aria-pressed") !== "true") selectTour(buttons, button);
   });
 }
+const closeup = document.querySelector("#closeup-film");
+const closeupButtons = [...document.querySelectorAll("[data-closeup]")];
+for (const button of closeupButtons) {
+  button.addEventListener("click", () => {
+    if (button.getAttribute("aria-pressed") === "true") return;
+    for (const item of closeupButtons) item.setAttribute("aria-pressed", String(item === button));
+    const light = button.dataset.closeup;
+    const base = "media/kernel-closeup-" + light;
+    closeup.pause();
+    closeup.poster = base + "-overview.png";
+    closeup.src = base + ".mp4";
+    closeup.setAttribute("aria-label", "Kernel Closeup " + (light === "day" ? "in daylight" : "at night"));
+    closeup.load();
+  });
+}
