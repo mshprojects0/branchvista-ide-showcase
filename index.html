@@ -19,7 +19,7 @@
     <span class="caption">Doom · Street view</span>
   </section>
   <section class="inner tours" id="tours">
-    <div class="section-head"><h2>City tours</h2><span>30 seconds each</span></div>
+    <div class="section-head"><h2>City tours</h2></div>
     <div class="gallery">
       <div class="choices" aria-label="Choose a recording">
         <button type="button" data-tour="doom" aria-pressed="true"><strong>Doom</strong><span>From skyline to street level</span></button>
@@ -37,7 +37,37 @@
     <div><h2>Inside a building</h2><p>Open a source file in the editor. Choose a platform under File, build a single file or a project, and expand the console to read its output.</p>
     <p>Windows targets support C, C++, C# and Python. Sega Genesis targets build C or 68000 assembly into a cartridge ROM and launch it in an emulator.</p></div>
 </div><div class="inner source-gallery"><figure><a href="media/doom-source.png"><img src="media/doom-source.png" alt="Doom · r_main.c open in the BranchVista editor" loading="lazy"></a><figcaption>Doom · r_main.c</figcaption></figure><figure><a href="media/linux-source.png"><img src="media/linux-source.png" alt="Linux · init/main.c open in the BranchVista editor" loading="lazy"></a><figcaption>Linux · init/main.c</figcaption></figure><figure><a href="media/xv6-source.png"><img src="media/xv6-source.png" alt="xv6 · kernel/proc.c open in the BranchVista editor" loading="lazy"></a><figcaption>xv6 · kernel/proc.c</figcaption></figure></div></section>
-</main>
+<section class="inner demos"><h2>Hello, world</h2><p>Run a native Windows dialog or build a Genesis ROM and launch it in BlastEm.</p><div class="source-gallery"><article><h3>Windows · C</h3><a href="media/windows-greeting.png"><img loading="lazy" src="media/windows-greeting.png" alt="Greeting from the running Windows · C example"></a><details><summary>View source</summary><pre><code>#include &lt;windows.h&gt;
+
+int WINAPI WinMain(HINSTANCE instance, HINSTANCE previous, LPSTR command, int show)
+{
+    MessageBoxA(NULL, &quot;Hello from a native Windows application!&quot;, &quot;BranchVista Windows&quot;, MB_OK);
+    return 0;
+}
+</code></pre></details></article><article><h3>Genesis · C</h3><a href="media/genesis-c.png"><img loading="lazy" src="media/genesis-c.png" alt="Greeting from the running Genesis · C example"></a><details><summary>View source</summary><pre><code>#include &lt;genesis.h&gt;
+
+int main(bool hardReset)
+{
+    VDP_drawText(&quot;Hello from Genesis C!&quot;, 8, 12);
+    while (TRUE) SYS_doVBlankProcess();
+}
+</code></pre></details></article><article><h3>Genesis · 68000 assembly</h3><a href="media/genesis-assembly.png"><img loading="lazy" src="media/genesis-assembly.png" alt="Greeting from the running Genesis · 68000 assembly example"></a><details><summary>View source</summary><pre><code>/* SGDK initializes the display before calling main. Use its 68000 C ABI. */
+    .text
+    .global main
+main:
+    move.l  #12,-(sp)
+    move.l  #6,-(sp)
+    pea     greeting
+    jsr     VDP_drawText
+    lea     12(sp),sp
+frame:
+    jsr     SYS_doVBlankProcess
+    bra.s   frame
+
+    .section .rodata
+greeting:
+    .asciz &quot;Hello from 68000 assembly!&quot;
+</code></pre></details></article></div></section></main>
 <footer><div class="inner"><span class="brand">Branch<span>Vista</span> - IDE</span><div>Featured source projects <a href="https://github.com/id-Software/DOOM">Doom</a><a href="https://github.com/mit-pdos/xv6-riscv">xv6</a><a href="https://www.kernel.org/">Linux</a></div></div></footer>
 <script src="showcase.js"></script>
 </body>
