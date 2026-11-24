@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#10141a">
+  <meta name="description" content="Explore Doom, xv6 and the Linux kernel as three-dimensional cities in CodeVerse. Watch real tours from the Windows IDE.">
+  <title>CodeVerse · Explore code in 3D</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header><div class="inner nav"><a class="brand" href="./">Code<span>Verse</span></a><nav aria-label="Main navigation"><a href="#tours">City tours</a><a href="#editor">The editor</a></nav></div></header>
+<main>
+  <section class="hero" aria-labelledby="heading">
+    <div class="inner"><h1 id="heading">Walk through<br>the <em>source.</em></h1>
+    <p>CodeVerse turns a local source tree into a 3D city. Fly over a project, follow a street, and open the file behind a building.</p>
+    <a class="watch" href="#tours">Watch the city tours</a></div>
+    <span class="caption">Doom · Street view</span>
+  </section>
+  <section class="inner tours" id="tours">
+    <div class="section-head"><h2>City tours</h2><span>30 seconds each</span></div>
+    <div class="gallery">
+      <div class="choices" aria-label="Choose a recording">
+        <button type="button" data-tour="doom" aria-pressed="true"><strong>Doom</strong><span>From skyline to street level</span></button>
+        <button type="button" data-tour="xv6-riscv" aria-pressed="false"><strong>xv6 on RISC-V</strong><span>A teaching OS in daylight</span></button>
+        <button type="button" data-tour="linux-helix" aria-pressed="false"><strong>Linux kernel</strong><span>Around the helix</span></button>
+      </div>
+      <figure class="screen">
+        <video id="film" controls playsinline preload="none" poster="media/doom-overview.png" src="media/doom.mp4" aria-label="Doom city tour"></video>
+        <figcaption id="description" aria-live="polite">Orbit the original Linux Doom source tree, zoom out over its 139 files, and descend onto Main Street.</figcaption>
+      </figure>
+    </div>
+    <noscript><p>Watch the <a href="media/xv6-riscv.mp4">xv6 tour</a> or the <a href="media/linux-helix.mp4">Linux kernel tour</a>.</p></noscript>
+  </section>
+  <section class="editor-section" id="editor"><div class="inner editor">
+    <div><h2>Inside a building</h2><p>Open a source file in the editor. Choose a platform under File, build a single file or a project, and expand the console to read its output.</p>
+    <p>Windows targets support C, C++, C# and Python. Sega Genesis targets build C or 68000 assembly into a cartridge ROM and launch it in an emulator.</p></div>
+    <a href="media/cpp-editor.png" aria-label="Open the full-size C++ editor screenshot"><img src="media/cpp-editor.png" alt="CodeVerse editor showing a C++ program and its Hello from C++ console output" width="1280" height="720" loading="lazy"></a>
+  </div></section>
+</main>
+<footer><div class="inner"><span class="brand">Code<span>Verse</span></span><div>Featured source projects <a href="https://github.com/id-Software/DOOM">Doom</a><a href="https://github.com/mit-pdos/xv6-riscv">xv6</a><a href="https://www.kernel.org/">Linux</a></div></div></footer>
+<script src="showcase.js"></script>
+</body>
+</html>
