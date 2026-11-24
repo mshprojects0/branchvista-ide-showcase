@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header><div class="inner nav"><a class="brand" href="./">Branch<span>Vista</span> - IDE</a><nav aria-label="Main navigation"><a href="#tours">City tours</a><a href="#editor">The editor</a></nav></div></header>
+<header><div class="inner nav"><a class="brand" href="./">Branch<span>Vista</span><sup>™</sup> - IDE</a><nav aria-label="Main navigation"><a href="#tours">City tours</a><a href="#editor">The editor</a><a href="#local-ai">Local AI</a></nav></div></header>
 <main>
   <section class="hero" aria-labelledby="heading">
     <div class="inner"><h1 id="heading">Walk through<br>the <em>source.</em></h1>
@@ -21,54 +21,26 @@
   <section class="inner tours" id="tours">
     <div class="section-head"><h2>City tours</h2></div>
     <div class="gallery">
-      <div class="choices" aria-label="Choose a recording">
-        <button type="button" data-tour="doom" aria-pressed="true"><strong>Doom</strong><span>From skyline to street level</span></button>
-        <button type="button" data-tour="xv6-riscv" aria-pressed="false"><strong>xv6 on RISC-V</strong><span>A teaching OS in daylight</span></button>
-        <button type="button" data-tour="linux-helix" aria-pressed="false"><strong>Linux kernel</strong><span>Around the helix</span></button>
+      <div class="tour-controls">
+        <div class="choices" aria-label="Tour project">
+          <button type="button" data-tour="doom" aria-pressed="true"><strong>Doom</strong><span>Renderer and game logic</span></button>
+          <button type="button" data-tour="xv6-riscv" aria-pressed="false"><strong>xv6 on RISC-V</strong><span>Kernel and user space</span></button>
+          <button type="button" data-tour="linux-helix" aria-pressed="false"><strong>Linux kernel</strong><span>Eight Sky City levels</span></button>
+        </div>
+        <div class="lighting" role="group" aria-label="Tour lighting"><button data-light="day" aria-pressed="true">Day</button><button data-light="night" aria-pressed="false">Night</button></div>
       </div>
       <figure class="screen">
-        <video id="film" controls playsinline preload="none" poster="media/doom-overview.png" src="media/doom.mp4" aria-label="Doom city tour"></video>
-        <figcaption id="description" aria-live="polite">Orbit the original Linux Doom source tree, zoom out over its 139 files, and descend onto Main Street.</figcaption>
+        <video id="film" controls playsinline preload="none" poster="media/doom-day-overview.png" src="media/doom-day.mp4" aria-label="Doom city tour"></video>
+        <figcaption id="description" aria-live="polite">A daylight orbit over the 139-file Doom source tree.</figcaption>
       </figure>
     </div>
-    <noscript><p>Watch the <a href="media/xv6-riscv.mp4">xv6 tour</a> or the <a href="media/linux-helix.mp4">Linux kernel tour</a>.</p></noscript>
+    <noscript><p>Watch the <a href="media/xv6-riscv-day.mp4">xv6 tour</a> or the <a href="media/linux-helix-day.mp4">Linux kernel tour</a>.</p></noscript>
   </section>
-  <section class="editor-section" id="editor"><div class="inner editor">
-    <div><h2>Inside a building</h2><p>Open a source file in the editor. Choose a platform under File, build a single file or a project, and expand the console to read its output.</p>
-    <p>Windows targets support C, C++, C# and Python. Sega Genesis targets build C or 68000 assembly into a cartridge ROM and launch it in an emulator.</p></div>
-</div><div class="inner source-gallery"><figure><a href="media/doom-source.png"><img src="media/doom-source.png" alt="Doom · r_main.c open in the BranchVista editor" loading="lazy"></a><figcaption>Doom · r_main.c</figcaption></figure><figure><a href="media/linux-source.png"><img src="media/linux-source.png" alt="Linux · init/main.c open in the BranchVista editor" loading="lazy"></a><figcaption>Linux · init/main.c</figcaption></figure><figure><a href="media/xv6-source.png"><img src="media/xv6-source.png" alt="xv6 · kernel/proc.c open in the BranchVista editor" loading="lazy"></a><figcaption>xv6 · kernel/proc.c</figcaption></figure></div></section>
-<section class="inner demos"><h2>Hello, world</h2><p>Run a native Windows dialog or build a Genesis ROM and launch it in BlastEm.</p><div class="source-gallery"><article><h3>Windows · C</h3><a href="media/windows-greeting.png"><img loading="lazy" src="media/windows-greeting.png" alt="Greeting from the running Windows · C example"></a><details><summary>View source</summary><pre><code>#include &lt;windows.h&gt;
-
-int WINAPI WinMain(HINSTANCE instance, HINSTANCE previous, LPSTR command, int show)
-{
-    MessageBoxA(NULL, &quot;Hello from a native Windows application!&quot;, &quot;BranchVista Windows&quot;, MB_OK);
-    return 0;
-}
-</code></pre></details></article><article><h3>Genesis · C</h3><a href="media/genesis-c.png"><img loading="lazy" src="media/genesis-c.png" alt="Greeting from the running Genesis · C example"></a><details><summary>View source</summary><pre><code>#include &lt;genesis.h&gt;
-
-int main(bool hardReset)
-{
-    VDP_drawText(&quot;Hello from Genesis C!&quot;, 8, 12);
-    while (TRUE) SYS_doVBlankProcess();
-}
-</code></pre></details></article><article><h3>Genesis · 68000 assembly</h3><a href="media/genesis-assembly.png"><img loading="lazy" src="media/genesis-assembly.png" alt="Greeting from the running Genesis · 68000 assembly example"></a><details><summary>View source</summary><pre><code>/* SGDK initializes the display before calling main. Use its 68000 C ABI. */
-    .text
-    .global main
-main:
-    move.l  #12,-(sp)
-    move.l  #6,-(sp)
-    pea     greeting
-    jsr     VDP_drawText
-    lea     12(sp),sp
-frame:
-    jsr     SYS_doVBlankProcess
-    bra.s   frame
-
-    .section .rodata
-greeting:
-    .asciz &quot;Hello from 68000 assembly!&quot;
-</code></pre></details></article></div></section></main>
-<footer><div class="inner"><span class="brand">Branch<span>Vista</span> - IDE</span><div>Featured source projects <a href="https://github.com/id-Software/DOOM">Doom</a><a href="https://github.com/mit-pdos/xv6-riscv">xv6</a><a href="https://www.kernel.org/">Linux</a></div></div></footer>
+  <section class="inner level-show"><h2>From above</h2><div class="source-gallery"><figure><video controls playsinline preload="none" poster="media/linux-levels-overview.png" src="media/linux-levels.mp4" aria-label="Linux kernel top-down level walkthrough"></video><figcaption>Linux kernel · Moving through Sky City levels</figcaption></figure><figure><a href="media/street-picker.png"><img loading="lazy" src="media/street-picker.png" alt="Top-down city map in Street Tour selection mode"></a><figcaption>Street Tour · Select a street on the map to follow it</figcaption></figure><figure><a href="media/folder-inspector.png"><img src="media/folder-inspector.png" alt="Linux level one with the arch folder expanded, file counts and subfolder sizes" loading="lazy"></a><figcaption>Folder inspector · Explore 532 folders and 10,618 files on one Linux level</figcaption></figure></div></section>
+  <section class="editor-section" id="editor"><div class="inner"><h2>Fullscreen editor</h2><div class="source-gallery"><figure><a href="media/doom-editor.png"><img loading="lazy" src="media/doom-editor.png" alt="Doom source open in the fullscreen BranchVista editor"></a><figcaption>Doom · r_main.c</figcaption></figure><figure><a href="media/xv6-riscv-editor.png"><img loading="lazy" src="media/xv6-riscv-editor.png" alt="xv6 source open in the fullscreen BranchVista editor"></a><figcaption>xv6 · kernel/proc.c</figcaption></figure><figure><a href="media/linux-helix-editor.png"><img loading="lazy" src="media/linux-helix-editor.png" alt="Linux source open in the fullscreen BranchVista editor"></a><figcaption>Linux · init/main.c</figcaption></figure></div></div></section>
+<section class="inner demos"><h2>Build and run</h2><div class="source-gallery"><figure><a href="media/windows-workspace.png"><img loading="lazy" src="media/windows-workspace.png" alt="Windows · C program running in front of its source editor"></a><figcaption><strong>Windows · C</strong><br>The Run button launches a native Windows dialog.</figcaption></figure><figure><a href="media/genesis-c-workspace.png"><img loading="lazy" src="media/genesis-c-workspace.png" alt="Genesis · C program running in front of its source editor"></a><figcaption><strong>Genesis · C</strong><br>BlastEm displays the greeting drawn by the Genesis C program.</figcaption></figure><figure><a href="media/genesis-asm-workspace.png"><img loading="lazy" src="media/genesis-asm-workspace.png" alt="Genesis · 68000 assembly program running in front of its source editor"></a><figcaption><strong>Genesis · 68000 assembly</strong><br>The assembled ROM prints its greeting in the emulator.</figcaption></figure></div></section><section class="inner demos" id="local-ai"><h2>Local AI in the editor</h2><p>Ask about an open file, follow up by voice, or listen to a reply while you explore. BranchVista connects to a local model through Ollama.</p>
+<div class="source-gallery"><figure><a href="media/ai-reply.png"><img src="media/ai-reply.png" alt="Local AI answering a question about the open Windows C sample" loading="lazy"></a><figcaption>A question about the open file</figcaption></figure><figure><a href="media/ai-questions.png"><img src="media/ai-questions.png" alt="The suggested questions menu inside the AI panel" loading="lazy"></a><figcaption>Suggested questions in the editor</figcaption></figure></div></section></main>
+<footer><div class="inner"><span class="brand">Branch<span>Vista</span> - IDE</span><div>Featured source projects <a href="https://github.com/id-Software/DOOM">Doom</a><a href="https://github.com/mit-pdos/xv6-riscv">xv6</a><a href="https://www.kernel.org/">Linux</a></div></div><div class="inner credits"><p>© 2026 BranchVista contributors. Original site text and recordings.</p><p>Tour music by Kevin MacLeod. Daylight tours use <a href="https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1500073">Bit Quest</a>. Night tours use <a href="https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1100844">Cipher</a>. Excerpts are trimmed, mixed at lower volume and faded under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</p></div></footer>
 <script src="showcase.js"></script>
 </body>
 </html>
