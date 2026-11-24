@@ -13,6 +13,9 @@ h2{margin:0;line-height:1.1;font-size:clamp(2.1rem,4.4vw,3.8rem);font-weight:650
 footer .credits{display:block;padding-top:0;font-size:.85rem}footer .credits a{margin:0}.brand sup{font-size:.45em;vertical-align:super}@media(max-width:520px){nav{gap:.55rem}.brand{font-size:1.15rem}nav a{font-size:.8rem}}
 .level-show .source-gallery{padding-top:1.5rem}.level-show{padding-block:0 1rem}
 .closeup{margin:1.5rem 0 3rem}.closeup p{color:var(--dim);margin-top:0}
+.highlight-player{width:min(100%,680px);margin-left:auto}
+.highlight-player iframe{display:block;width:100%;aspect-ratio:16/9;height:auto;border:0}
+.highlight-player p{text-align:right;margin:.45rem 0 0}
 header nav { align-items: center; }
 .support-project {
   display: inline-flex;
