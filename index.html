@@ -7,7 +7,7 @@
   <meta name="description" content="Explore Doom, xv6 and the Linux kernel as three-dimensional cities in BranchVista. Watch real tours from the Windows IDE.">
   <link rel="icon" href="branchvista.svg" type="image/svg+xml">
   <title>BranchVista - IDE · Explore code in 3D</title>
-  <link rel="stylesheet" href="style.css?v=no-controls">
+  <link rel="stylesheet" href="style.css?v=poster-play">
 </head>
 <body>
 <header><div class="inner nav"><a class="brand" href="./">Branch<span>Vista</span><sup>™</sup> - IDE</a><nav aria-label="Main navigation"><a href="#tours">City tours</a><a href="#editor">The editor</a><a href="#local-ai">Local AI</a><a class="support-project" href="support.html" aria-label="Support BranchVista"><span aria-hidden="true">☕</span><span>Support<br>BranchVista · $10</span></a></nav></div></header>
@@ -18,8 +18,11 @@
       <p>BranchVista turns a local source tree into a 3D city. Fly over a project, follow a street, and open the file behind a building.</p>
       <a class="watch" href="#tours">Watch the city tours</a>
       <a class="watch" href="#alpha">Join the alpha waitlist</a></div>
-      <div class="highlight-player">
-        <iframe src="https://www.youtube-nocookie.com/embed/ATS02-IsS4I?controls=0" title="Doom Is a City. Linux Is a Spiral. A Tour Inside BranchVista IDE" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>
+      <div class="highlight-player" data-video="ATS02-IsS4I">
+        <button class="video-poster" type="button" aria-label="Play BranchVista project video">
+          <img src="media/BranchVista-YouTube-thumbnail.jpg" alt="">
+          <span aria-hidden="true">▶</span>
+        </button>
       </div>
     </div>
     <span class="caption">Doom · Street view</span>
@@ -57,5 +60,16 @@
 <footer><div class="inner"><span class="brand">Branch<span>Vista</span> - IDE</span><div>Featured source projects <a href="https://github.com/id-Software/DOOM">Doom</a><a href="https://github.com/mit-pdos/xv6-riscv">xv6</a><a href="https://www.kernel.org/">Linux</a></div></div><div class="inner credits"><p>© 2026 BranchVista contributors. Original site text and recordings.</p><p>Tour music by Kevin MacLeod. The daylight Doom city tour uses <a href="https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1500073">Bit Quest</a>. Its night tour uses <a href="https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1100844">Cipher</a>. The xv6 city tour uses <a href="https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1400006">Aurea Carmina</a> by day and <a href="https://incompetech.com/music/royalty-free/index.html?isrc=USUAN2100030">Space Jazz</a> at night. The Linux city tour uses <a href="https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1600039">District Four</a> by day and <a href="https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1500012">Odyssey</a> at night. Kernel Closeup pairs daylight with <a href="https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1700010">Digital Lemonade</a> and night with <a href="https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1100199">I Knew a Guy</a>. The overhead Linux walkthrough uses <a href="https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1100614">Tranquility Base</a>, and the Doom street tour uses <a href="https://incompetech.com/music/royalty-free/index.html?isrc=USUAN2000025">Voxel Revolution</a>. Excerpts are trimmed, mixed at lower volume and faded under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</p></div></footer>
 
 <script src="showcase.js"></script>
+<script>
+document.querySelectorAll(".video-poster").forEach(button => button.addEventListener("click", () => {
+  const player = button.closest(".highlight-player");
+  const frame = document.createElement("iframe");
+  frame.src = `https://www.youtube-nocookie.com/embed/${player.dataset.video}?autoplay=1&controls=0`;
+  frame.title = "BranchVista project video";
+  frame.allow = "autoplay; encrypted-media; picture-in-picture; fullscreen";
+  frame.allowFullscreen = true;
+  player.replaceChildren(frame);
+}));
+</script>
 </body>
 </html>
