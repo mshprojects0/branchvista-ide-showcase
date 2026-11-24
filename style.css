@@ -19,8 +19,8 @@ header nav { align-items: center; }
   align-items: center;
   gap: .3rem;
   min-height: 24px;
-  padding: 0 .45rem;
-  border-radius: .35rem;
+  padding: .22rem .45rem;
+  border-radius: 3px;
   background: #d1ee80;
   color: #17200c;
   font: 600 .72rem/1.2 system-ui, sans-serif;
